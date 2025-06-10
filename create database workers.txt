@@ -1,0 +1,29 @@
+create database workers
+use workers
+create table employees (emp_id int , ename varchar(100) , department varchar(100) , salary decimal(10,2) , join_date date , left_date date)
+select * from employees
+insert into employees (emp_id,ename,department,salary,join_date,left_date) values
+(101, 'Alice Johnson', 'HR', 45000.00, '2022-03-15', NULL),
+(102, 'Bob Smith', 'IT', 70000.00, '2021-07-23', NULL),
+(103, 'Charlie Brown', 'Sales', 55000.00, '2023-01-10', NULL),
+(104, 'Diana Prince', 'Finance', 60000.00, '2020-11-01', '2024-02-28'),
+(105, 'Ethan Hunt', 'IT', 75000.00, '2023-06-12', NULL),
+(106, 'Fiona Gallagher', 'HR', 48000.00, '2022-08-30', NULL),
+(107, 'George Miller', 'Sales', 52000.00, '2021-12-05', NULL),
+(108, 'Helen Carter', 'Finance', 59000.00, '2019-09-20', NULL),
+(109, 'Ian Wright', 'IT', 72000.00, '2022-05-14', NULL),
+(110, 'Jenny Lake', 'HR', 47000.00, '2021-10-11', NULL);
+select * from employees where not department='HR'
+select * from employees where department='IT' or join_date='2023-01-01'
+select * from employees where department='Sales' and salary>50000
+select max(salary) from employees
+select * from employees where department in ('HR','Sales','IT')
+update employees set salary=70000 where emp_id=101
+select * from employees where ename like '%r'
+select * from employees where salary between 40000 and 70000 
+select * from employees order by salary desc
+select * from employees order by salary asc
+select * from employees where emp_id between 105 and 110 order by emp_id , salary desc
+select * from employees where emp_id between 105 and 110 order by emp_id asc
+select count(emp_id),department from employees group by department 
+select count(emp_id)as sno,department from employees group by department having count(emp_id)<3

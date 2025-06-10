@@ -1,0 +1,16 @@
+create database customers
+use customers
+create table customerdetails (customerid int,customername varchar(30),lastname varchar(20),country varchar(15),dob date,age int,phonenumber int )
+select * from customerdetails
+alter table customerdetails change lastname fullname varchar(20)
+alter table customerdetails add column salary int
+alter table customerdetails drop column fullname
+insert into customerdetails (customerid,customername,country,dob,age,phonenumber,salary) 
+values (101,"gayathri","india","2002-01-26",22,88258,25000)
+insert into customerdetails values (102,"gowsiga","dubai","2003-05-05",20,63698,20000),
+(103,"sathya","usa","1999-07-07",26,90434,40000),
+(104,"chandra",null,null,34,null,60000)
+update customerdetails set country="korea" where customerid=103
+update customerdetails set country="usa" where customerid=104
+delete from customeredetails where customerid=102
+truncate table customerdetails
