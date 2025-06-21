@@ -1,0 +1,43 @@
+use customers 
+select * from customers
+ create table salary ( sid int primary key AUTO_INCREMENT, srange float)
+ drop table salary
+ drop table office
+ drop table officedetails 
+INSERT INTO salary (srange) VALUES (30000.00), (50000.00), (45000.00), (70000.00), (40000.00), (60000.00), (55000.00),(35000.00)
+SELECT * FROM salary
+ 
+ create table office(regid int primary key, cname varchar(40) not null, department varchar(20),cuser int,
+ foreign key(cuser)references salary(sid))
+ insert into office (regid,cname, department,cuser) values
+ (101,'gayathri','CSE',1),
+ (102,'vaideki','IT',2),
+ (103,'vasuki','EEE',3),
+ (104,'sindhu','ECE',4),
+ (105,'kalpana','IT',5),
+ (106,'chandra','CSE',6),
+ (107,'vinodh','ECE',7),
+ (108,'aravindh','CSE',8)
+ SELECT * FROM office
+ 
+
+create table officedetails(ename varchar(30) not null,age int,phone varchar(30),email varchar(40),place varchar(30),
+ reg int, foreign key(reg)references office(regid))
+ insert into officedetails(ename,age,phone,email,place,reg) values
+ ('A',23,9875485748,'qwer@gmail.com','velachery',101),
+ ('B',26,7569485949,'asdfg@gmail.com','perungudi',102),
+ ('C',26,9599659459,'zxcv@gmail.com','tharamani',103),
+ ('D',33,8865748309,'poiu@gmail.com','thiruvanmiyur',104),
+ ('E',38,9087654322,'lkjh@gmail.com','indiranagar',105),
+ ('F',28,6376098565,'mnbv@gmail.com','kasthuribaynagar',106),
+ ('G',45,9886598634,'furhqwui@gmail.com','kotturpuram',107),
+ ('H',35,8594385959,'gtrihgfn@gmail.com','mylapore',108)
+ SELECT * FROM officedetails
+ USE customers
+ SELECT cname,place,age,phone,email,department FROM office
+ LEFT JOIN officedetails  ON office.regid=officedetails.reg
+ UNION
+SELECT cname,place,age,phone,email,department FROM office
+RIGHT JOIN officedetails  ON office.regid=officedetails.reg
+
+SELECT cname,place,age,phone,email,department FROM office,officedetails WHERE office.regid=officedetails.reg
